@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "module": "es6",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "types": [
+      "enzyme",
+      "jest",
+      "react",
+      "react-dom",
+      "styled-components",
+      "webpack-env"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "include": [
+    "src/*.ts",
+    "node_modules/@types"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

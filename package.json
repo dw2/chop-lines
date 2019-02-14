@@ -1,0 +1,60 @@
+{
+  "name": "chop-lines",
+  "version": "1.0.0",
+  "description": "A React component which truncates lines of HTML.",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && webpack -p --config ./webpack.config.js --colors --display-error-details",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest -c jest.config.js --coverage"
+  },
+  "repository": "git@github.com:dw2/chop-lines.git",
+  "author": "Douglas Waltman II <doug@dougwaltman.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-decorators": "^7.3.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/enzyme": "^3.1.18",
+    "@types/jest": "^24.0.5",
+    "@types/react": "^16.8.3",
+    "@types/react-dom": "^16.0.0",
+    "@types/styled-components": "^4.1.10",
+    "@types/webpack-env": "^1.13.7",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-styled-components": "^1.10.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.9.1",
+    "jest": "^23.6.0",
+    "jest-cli": "^23.6.0",
+    "jest-environment-jsdom": "^24.0.0",
+    "jest-environment-jsdom-global": "^1.1.0",
+    "jest-styled-components": "^6.3.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-hot-loader": "^4.6.5",
+    "source-map-loader": "^0.2.4",
+    "styled-components": "^4.0.0",
+    "ts-jest": "^23.6.0",
+    "tslint": "^5.12.1",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.3.3",
+    "webpack": "^4.29.3",
+    "webpack-cli": "^3.2.3"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "styled-components": "^4.0.0"
+  },
+  "dependencies": {
+    "global": "^4.3.2",
+    "lodash.debounce": "^4.0.0"
+  }
+}

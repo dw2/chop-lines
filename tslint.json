@@ -1,0 +1,12 @@
+{
+  "extends": ["tslint:recommended", "tslint-react"],
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "jsx-boolean-value": ["error", "never"],
+    "jsx-no-multiline-js": ["error", "never"],
+    "ordered-imports": false,
+    "quotemark": [true, "single", "jsx-single"],
+    "member-access": [true, "no-public"],
+    "curly": [true, "ignore-same-line"]
+  }
+}

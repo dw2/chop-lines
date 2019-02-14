@@ -1,0 +1,16 @@
+# System Files
+.DS_Store
+
+# Dependency directories
+node_modules
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log
+
+# Test coverage
+coverage
+
+# This package uses Yarn
+package-lock.json

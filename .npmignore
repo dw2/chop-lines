@@ -1,0 +1,12 @@
+# Config
+webpack.config.js
+.gitignore
+.tslint.json
+
+# System Files
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log
