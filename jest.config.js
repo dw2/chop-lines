@@ -2,6 +2,7 @@ module.exports = {
   preset: 'ts-jest',
   collectCoverageFrom: [
     'src/chop-lines.tsx',
+    'src/components.tsx',
   ],
   coverageThreshold: {
     global: {
