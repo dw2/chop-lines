@@ -25,7 +25,6 @@ module.exports = {
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '^styled-components': '<rootDir>/node_modules/styled-components',
   },
   modulePathIgnorePatterns: [
     'dist',

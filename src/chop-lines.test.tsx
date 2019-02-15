@@ -1,5 +1,4 @@
 import * as React from 'react';
-import 'jest-styled-components';
 import { mount } from 'enzyme';
 import ChopLines from './chop-lines';
 
@@ -14,7 +13,7 @@ describe('The ChopLines component', () => {
     });
   };
 
-  it('should render with default props', () => {
+  it('should render with the default ellipsis', () => {
     mockBoundsForHeight(32);
     wrapper = mount(
       <ChopLines lines={1} lineHeight={16}>
@@ -22,18 +21,6 @@ describe('The ChopLines component', () => {
       </ChopLines>,
     );
     expect(wrapper.html()).toContain('…');
-  });
-
-  it('should render with a specified background color', () => {
-    mockBoundsForHeight(32);
-    wrapper = mount(
-      <ChopLines lines={1} lineHeight={16} background="blue">
-        <p>Testing</p>
-      </ChopLines>,
-    );
-    expect(
-      wrapper.find('div').first().find('div').last()
-    ).toHaveStyleRule('background', 'blue');
   });
 
   it('should render the ellipsis when content exceeds maxium lines', () => {

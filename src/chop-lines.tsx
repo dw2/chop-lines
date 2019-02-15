@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import window from 'global';
 import debounce from 'lodash.debounce';
-import { Wrapper, AutoSizer, Ellipsis } from './styled-components';
+import { Wrapper, AutoSizer, Ellipsis } from './components';
 import { ChopLinesProps, ChopLinesState } from './types';
 
 class ChopLines extends Component<ChopLinesProps, ChopLinesState> {
@@ -48,28 +48,22 @@ class ChopLines extends Component<ChopLinesProps, ChopLinesState> {
       lineHeight,
       children,
       ellipsis = '…',
-      background = '#ffffff',
       ...rest
     } = this.props;
-    const maxHeight = this.doesOverflow ? `${lineHeight * lines}px` : 'auto';
-    const overflow = this.doesOverflow ? 'hidden' : 'auto';
-    const lineHeightPx = `${lineHeight}px`;
 
     return (
-      // @ts-ignore
       <Wrapper
-        css={{ lineHeight: lineHeightPx, maxHeight, overflow }}
         {...rest}
+        lineHeight={`${lineHeight}px`}
+        maxHeight={this.doesOverflow ? `${lineHeight * lines}px` : 'auto'}
+        overflow={this.doesOverflow ? 'hidden' : 'auto'}
       >
-        <AutoSizer ref={this.setAutoSizerRef} aria-hidden>
+        <AutoSizer forwardedRef={this.setAutoSizerRef} aria-hidden>
           {children}
         </AutoSizer>
         {children}
         {this.doesOverflow && (
-          <Ellipsis
-            background={background}
-            lineHeight={lineHeightPx}
-          >
+          <Ellipsis>
             {ellipsis}
           </Ellipsis>
         )}
