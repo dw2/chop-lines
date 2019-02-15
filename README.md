@@ -1,5 +1,8 @@
 # ChopLines
-ChopLines is a React component which truncates lines of HTML.
+ChopLines is a React component which truncates lines of HTML markup.
+
+*Note: Due to the package size, it is recommend to use a simpler solution
+such as ReactTruncate for truncating text strings.*
 
 ## Usage
 | Property       | Type                                 | Value    | Default  |
@@ -9,6 +12,21 @@ ChopLines is a React component which truncates lines of HTML.
 | **background** | string                               | optional | #FFFFFF  |
 | **ellipsis**   | ReactNode or ReactElement&lt;any&gt; | optional | &hellip; |
 | **children**   | ReactNode or ReactElement&lt;any&gt; | required |          |
+
+## Example
+```
+<ChopLines
+  lines={1}
+  lineHeight={16}
+  background="#CCCCCC"
+  ellipsis={<a>Read More</a>}
+>
+  <p>
+    This component was built to work with
+    <strong>rich text markup.</strong>
+  </p>
+</ChopLines>
+```
 
 ## Peer Dependencies
 ChopLines makes two assumptions about your React application:
