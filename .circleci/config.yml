@@ -1,0 +1,74 @@
+version: 2
+
+docker_image: &docker_image
+  working_directory: ~/chop-lines
+  docker:
+    - image: circleci/node:10.7.0
+
+cache_key: &cache_key yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
+cache_keys: &cache_keys
+  - *cache_key
+  - yarn-{{ .Branch }}-
+  - yarn-
+cache_paths: &cache_paths
+  - node_modules
+  - ~/.cache/yarn
+
+yarn_install: &yarn_install
+  run:
+    name: Install yarn packages
+    command: yarn install --non-interactive --cache-folder ~/.cache/yarn
+
+jobs:
+  test:
+    <<: *docker_image
+    steps:
+      - checkout
+      - restore_cache:
+          keys: *cache_keys
+      - *yarn_install
+      - save_cache:
+          key: *cache_key
+          paths: *cache_paths
+      - run:
+          name: Run linters
+          command: yarn lint
+      - run:
+          name: Run Tests and Coverage
+          command: yarn test
+      - run:
+          name: Collect Codecov report
+          command: bash <(curl -s https://codecov.io/bash)
+
+  publish:
+    <<: *docker_image
+    steps:
+      - checkout
+      - restore_cache:
+          keys: *cache_keys
+      - *yarn_install
+      - run:
+          name: Build the dist
+          command: yarn build
+      - run:
+          name: Release a new version
+          command: npx semantic-release
+      - run:
+          name: Authenticate to NPM registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/chop-lines/.npmrc
+      - run:
+          name: Publish NPM package
+          command: npm publish
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - test
+      - publish:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - master

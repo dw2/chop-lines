@@ -1,6 +1,9 @@
 # ChopLines
 ChopLines is a React component which truncates multiple lines of HTML markup.
 
+This repo uses NVM, yarn, TypeScript, Webpack+Babel, and tests with Jest+Enzyme.
+Deploys to NPM are semantic, automated with CircleCI, and use Commitizen.
+
 ## Installation
 Add the dependency:
 ```
@@ -19,9 +22,6 @@ import ChopLines from 'chop-lines';
 | **ellipsis**   | ReactNode or ReactElement&lt;any&gt; | "&hellip;" |
 | **children**   | ReactNode or ReactElement&lt;any&gt; | required   |
 
-*Note: Due to the package size, it is recommend to use a simpler solution such
-as ReactTruncate for truncating simple text strings.*
-
 ## Example
 ```
 <ChopLines
@@ -38,22 +38,36 @@ as ReactTruncate for truncating simple text strings.*
 ```
 
 ## Contributing
-ChopLines uses NVM, yarn, TypeScript, Webpack+Babel, and tests with Jest+Enzyme.
+ChopLines follows semantic release versioning with Commitizen.
 
-## Testing
+### Committing
+Install commitizen globally, if you have not already.
+```
+npm install -g commitizen
+```
+When you are ready to commit your changes, run...
+```
+git cz
+```
+Then, follow the CLI wizard.
+
+**Note:** *Choosing 'feat' or adding 'BREAKING CHANGE' in the commit will
+result in a major version bump during the release.*
+
+### Testing
 ```
 nvm use
 yarn
 yarn test
 ```
 
-## Additional Commands
+### Additional Commands
 Keep things tidy
 ```
 yarn lint
 ```
 
-Compiling
+Test that your changes compile
 ```
 yarn build
 ```
