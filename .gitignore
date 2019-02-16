@@ -12,8 +12,5 @@ yarn-error.log
 # Test coverage
 coverage
 
-# Build artifacts
-dist
-
 # This package uses Yarn
 package-lock.json
