@@ -49,7 +49,11 @@ jobs:
       - *yarn_install
       - run:
           name: Release new version
-          command: yarn build && npx semantic-release
+          command: |
+            yarn build
+            cp package.json dist/package.json
+            cp README.md dist/README.md
+            npx semantic-release
 
 workflows:
   version: 2

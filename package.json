@@ -21,7 +21,7 @@
     }
   },
   "publishConfig": {
-    "pkgRoot": "."
+    "pkgRoot": "./dist"
   },
   "lint-staged": {
     "*.{ts,tsx,js,json}": [
