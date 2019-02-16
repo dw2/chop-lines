@@ -48,11 +48,8 @@ jobs:
           keys: *cache_keys
       - *yarn_install
       - run:
-          name: Build the dist
-          command: yarn build
-      - run:
           name: Release new version
-          command: npx semantic-release
+          command: yarn build && npx semantic-release
 
 workflows:
   version: 2
