@@ -1,3 +1,3 @@
-const ChopLines = require('./dist/chop-lines.js');
+const ChopLines = require("./dist/index.js");
 
 module.exports = ChopLines;
