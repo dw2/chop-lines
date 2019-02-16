@@ -1,6 +1,6 @@
 {
   "name": "chop-lines",
-  "version": "1.0.1",
+  "version": "0.0.0-semantic-release",
   "description": "A React component which truncates lines of HTML.",
   "main": "index.js",
   "scripts": {
