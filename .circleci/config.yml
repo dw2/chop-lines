@@ -51,7 +51,6 @@ jobs:
           name: Release new version
           command: |
             yarn build
-            cp package.json dist/package.json
             cp README.md dist/README.md
             npx semantic-release
 
