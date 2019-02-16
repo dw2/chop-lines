@@ -58,7 +58,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/chop-lines/.npmrc
       - run:
           name: Publish NPM package
-          command: npm publish
+          command: npm publish --allow-same-version
 
 workflows:
   version: 2
