@@ -1,7 +1,7 @@
 # ChopLines
 ChopLines is a React component which truncates multiple lines of HTML markup.
 
-[![CircleCI](https://circleci.com/gh/dw2/chop-lines.svg?style=svg)](https://circleci.com/gh/dw2/chop-lines) ![Codecov](https://codecov.io/gh/dw2/chop-lines/branch/master/graph/badge.svg)
+![](https://img.shields.io/github/release/dw2/chop-lines.svg) [![CircleCI](https://circleci.com/gh/dw2/chop-lines.svg?style=svg)](https://circleci.com/gh/dw2/chop-lines) ![Codecov](https://codecov.io/gh/dw2/chop-lines/branch/master/graph/badge.svg)
 
 ## Installation
 Add the dependency:
