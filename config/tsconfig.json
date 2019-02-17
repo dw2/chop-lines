@@ -9,22 +9,9 @@
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
-    "types": [
-      "enzyme",
-      "jest",
-      "react",
-      "react-dom",
-      "webpack-env"
-    ],
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "types": ["enzyme", "jest", "react", "react-dom", "webpack-env"],
+    "typeRoots": ["node_modules/@types"]
   },
-  "include": [
-    "src/*.ts",
-    "node_modules/@types"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/*.ts", "node_modules/@types"],
+  "exclude": ["node_modules"]
 }

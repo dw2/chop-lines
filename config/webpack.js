@@ -3,10 +3,10 @@ const path = require("path");
 module.exports = {
   entry: [
     "react-hot-loader/patch",
-    path.join(__dirname, "/src/chop-lines.tsx")
+    path.join(__dirname, "../src/chop-lines.tsx")
   ],
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     filename: "index.js",
     library: "chop-lines",
     libraryTarget: "umd",
@@ -16,8 +16,8 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
-      react: path.resolve(__dirname, "./node_modules/react"),
-      "react-dom": path.resolve(__dirname, "./node_modules/react-dom")
+      react: path.resolve(__dirname, "../node_modules/react"),
+      "react-dom": path.resolve(__dirname, "../node_modules/react-dom")
     }
   },
   externals: {
