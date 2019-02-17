@@ -21,20 +21,9 @@ import ChopLines from 'chop-lines';
 | **ellipsis**   | ReactNode or ReactElement&lt;any&gt; | "&hellip;" |
 | **children**   | ReactNode or ReactElement&lt;any&gt; | required   |
 
-## Example
-```
-<ChopLines
-  lines={2}
-  lineHeight={24}
-  ellipsis={<a>Read More</a>}
->
-  <p>
-    This component was built to work with<br />
-    <strong>rich text markup.</strong><br />
-    And <a href="#">links</a> too!
-  </p>
-</ChopLines>
-```
+## [Implementation Example &rsaquo;](https://github.com/dw2/chop-lines/wiki/Implementation-Example)
+
+---
 
 ## Contributing
 ChopLines follows semantic release versioning with Commitizen.
@@ -44,8 +33,9 @@ Install commitizen globally, if you have not already.
 ```
 npm install -g commitizen
 ```
-When you are ready to commit your changes, run...
+When you are ready to commit your changes&hellip;
 ```
+get add .
 git cz
 ```
 Then, follow the CLI wizard.
