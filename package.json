@@ -28,9 +28,6 @@
       "config": "config/commitizen.js"
     }
   },
-  "publishConfig": {
-    "pkgRoot": "./dist"
-  },
   "lint-staged": {
     "*.{ts,tsx,js,json}": [
       "prettier --write",
