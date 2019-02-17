@@ -52,6 +52,7 @@ jobs:
           command: |
             yarn build
             cp README.md dist/README.md
+            cp package.json dist/package.json
             npx semantic-release
 
 workflows:
