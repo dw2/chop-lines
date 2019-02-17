@@ -7,7 +7,8 @@
     "lint": "tslint -c config/tslint.json -p config/tsconfig.json && eslint --print-config config/.eslintrc.js | eslint-config-prettier-check",
     "test": "jest -c config/jest/config.js --coverage",
     "build": "rm -rf ./dist && webpack -p --config config/webpack.js --colors --display-error-details",
-    "precommit": "tslint -c config/tslint.json -p config/tsconfig.json && eslint --print-config config/.eslintrc.js | eslint-config-prettier-check && lint-staged"
+    "precommit": "tslint -c config/tslint.json -p config/tsconfig.json && eslint --print-config config/.eslintrc.js | eslint-config-prettier-check && lint-staged",
+    "postpublish": "cp package.json dist/package.json && cp npm-shrinkwrap.json dist/npm-shrinkwrap.json && cp -r README.md dist/README.md"
   },
   "repository": "git@github.com:dw2/chop-lines.git",
   "author": "Douglas Waltman II <doug@dougwaltman.com>",
@@ -66,6 +67,9 @@
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/npm": "^5.1.4",
+    "@semantic-release/release-notes-generator": "^7.1.4",
     "@types/enzyme": "^3.1.18",
     "@types/jest": "^24.0.5",
     "@types/react": "^16.8.3",
