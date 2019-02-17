@@ -1,6 +1,7 @@
 {
   "plugins": [
     "@semantic-release/commit-analyzer",
-    ["@semantic-release/npm", { "pkgRoot": "dist" }]
+    ["@semantic-release/npm", { "pkgRoot": "dist" }],
+    "@semantic-release/github"
   ]
 }
