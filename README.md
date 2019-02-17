@@ -3,6 +3,8 @@ ChopLines is a React component which truncates multiple lines of HTML markup.
 
 ![](https://img.shields.io/github/release/dw2/chop-lines.svg) [![CircleCI](https://circleci.com/gh/dw2/chop-lines.svg?style=svg)](https://circleci.com/gh/dw2/chop-lines) ![Codecov](https://codecov.io/gh/dw2/chop-lines/branch/master/graph/badge.svg)
 
+![choplines-responsive](https://user-images.githubusercontent.com/746347/52906636-bdf94a00-3204-11e9-8fb4-03aab71e70b8.gif)
+
 ## Installation
 Add the dependency:
 ```
@@ -13,13 +15,14 @@ And then in your component(s):
 import ChopLines from 'chop-lines';
 ```
 
-## Usage
-| Prop           | Type                                 | Default    |
-| -------------- | ------------------------------------ | ---------- |
-| **lines**      | number                               | required   |
-| **lineHeight** | number                               | required   |
-| **ellipsis**   | ReactNode or ReactElement&lt;any&gt; | "&hellip;" |
-| **children**   | ReactNode or ReactElement&lt;any&gt; | required   |
+## Props
+| Prop | Type | Requirement |
+| ---- | ---- | ----------- |
+| **lines** | number | required if maxHeight is not set |
+| **lineHeight** | number | required if maxHeight is not set |
+| **maxHeight** | number | required if lines &amp; linesHeight are not set |
+| **ellipsis** | ReactNode or ReactElement&lt;any&gt; | Optional (default: "&hellip;") |
+| **children** | ReactNode or ReactElement&lt;any&gt; | required |
 
 ## [Implementation Example &rsaquo;](https://github.com/dw2/chop-lines/wiki/Implementation-Example)
 

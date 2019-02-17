@@ -1,8 +1,9 @@
 type Children = ReactNode | ReactElement<any>;
 
 export interface ChopLinesProps {
-  lines: number;
-  lineHeight: number;
+  lines?: number;
+  lineHeight?: number;
+  maxHeight?: number;
   background?: string;
   ellipsis?: Children;
   children: Children;
