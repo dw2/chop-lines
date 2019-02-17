@@ -12,6 +12,14 @@
   "repository": "git@github.com:dw2/chop-lines.git",
   "author": "Douglas Waltman II <doug@dougwaltman.com>",
   "license": "MIT",
+  "keywords": [
+    "react",
+    "truncate",
+    "ellipsis",
+    "multiline",
+    "markup",
+    "typescript"
+  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-customizable"
