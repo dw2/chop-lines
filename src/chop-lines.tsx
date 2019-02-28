@@ -8,30 +8,22 @@ class ChopLines extends Component<ChopLinesProps, ChopLinesState> {
   state = { height: 0 };
 
   onResize = debounce(() => {
-    this.window.requestAnimationFrame(this.measureAutoSizer);
+    try {
+      window.requestAnimationFrame(this.measureAutoSizer);
+    } catch (e) {}
   }, 50);
 
   componentDidMount() {
     this.measureAutoSizer();
-    this.window.addEventListener("resize", this.onResize);
+    try {
+      window.addEventListener("resize", this.onResize);
+    } catch (e) {}
   }
 
   componentWillUnmount() {
-    this.window.removeEventListener("resize", this.onResize);
-  }
-
-  get window() {
-    /* istanbul ignore next */
-    if (window) return window;
-    /* istanbul ignore next */
-    // @ts-ignore
-    if (typeof global !== "undefined" && global.window) return global.window;
-    /* istanbul ignore next */
-    return {
-      requestAnimationFrame: () => {},
-      addEventListener: () => {},
-      removeEventListener: () => {}
-    };
+    try {
+      window.removeEventListener("resize", this.onResize);
+    } catch (e) {}
   }
 
   get doesOverflow() {
