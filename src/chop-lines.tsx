@@ -1,23 +1,29 @@
+/// <reference path="index.d.ts" />
 import React, { Component } from "react";
 import window from "global";
 import debounce from "lodash.debounce";
 import { Wrapper, AutoSizer, Ellipsis } from "./components";
-import { ChopLinesProps, ChopLinesState } from "./types";
 
 class ChopLines extends Component<ChopLinesProps, ChopLinesState> {
   autoSizer?: HTMLElement;
   state = { height: 0 };
 
   onResize = debounce(() => {
+    /* istanbul ignore next */
+    if (!window) return;
     window.requestAnimationFrame(this.measureAutoSizer);
   }, 50);
 
   componentDidMount() {
+    /* istanbul ignore next */
+    if (!window) return;
     this.measureAutoSizer();
     window.addEventListener("resize", this.onResize);
   }
 
   componentWillUnmount() {
+    /* istanbul ignore next */
+    if (!window) return;
     window.removeEventListener("resize", this.onResize);
   }
 

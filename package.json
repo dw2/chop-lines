@@ -3,6 +3,7 @@
   "version": "0.0.0-semantic-release",
   "description": "A React component which truncates lines of HTML.",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "lint": "tslint -c config/tslint.json -p config/tsconfig.json && eslint --print-config config/.eslintrc.js | eslint-config-prettier-check",
     "test": "jest -c config/jest/config.js --coverage",
@@ -71,6 +72,7 @@
     "@semantic-release/npm": "^5.1.4",
     "@types/enzyme": "^3.1.18",
     "@types/jest": "^24.0.5",
+    "@types/lodash": "^4.14.121",
     "@types/react": "^16.8.3",
     "@types/react-dom": "^16.8.1",
     "@types/webpack-env": "^1.13.7",

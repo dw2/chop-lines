@@ -1,9 +1,10 @@
+/// <reference path="index.d.ts" />
 import * as React from "react";
 import { mount } from "enzyme";
 import ChopLines from "./chop-lines";
 
 describe("The ChopLines component", () => {
-  let wrapper;
+  let wrapper: any;
   const ellipsis = <a>Read More</a>;
   const defualtBounds = { width: 420, top: 0, left: 0, bottom: 0, right: 0 };
 

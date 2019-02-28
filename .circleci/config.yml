@@ -53,6 +53,7 @@ jobs:
             yarn build
             cp README.md dist/README.md
             cp package.json dist/package.json
+            cp src/index.d.ts dist/index.d.ts
             npx semantic-release
 
 workflows:

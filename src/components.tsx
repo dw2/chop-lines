@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { WrapperProps, AutoSizerProps, EllipsisProps } from './types';
+/// <reference path="index.d.ts" />
+import * as React from "react";
 
 export const Wrapper = ({
   lineHeight,
@@ -11,10 +11,10 @@ export const Wrapper = ({
   <div
     {...rest}
     style={{
-      position: 'relative',
+      position: "relative",
       lineHeight,
       maxHeight,
-      overflow,
+      overflow
     }}
   >
     {children}
@@ -26,13 +26,13 @@ export const AutoSizer = ({ forwardedRef, children }: AutoSizerProps) => (
     ref={forwardedRef}
     style={{
       opacity: 0,
-      pointerEvents: 'none',
+      pointerEvents: "none",
       left: 0,
-      position: 'absolute',
+      position: "absolute",
       right: 0,
       top: 0,
-      visibility: 'hidden',
-      zIndex: -1,
+      visibility: "hidden",
+      zIndex: -1
     }}
   >
     {children}
@@ -43,10 +43,10 @@ export const Ellipsis = ({ children }: EllipsisProps) => (
   <div
     style={{
       bottom: 0,
-      lineHeight: 'inherit',
-      position: 'absolute',
+      lineHeight: "inherit",
+      position: "absolute",
       right: 0,
-      userSelect: 'none',
+      userSelect: "none"
     }}
   >
     {children}
