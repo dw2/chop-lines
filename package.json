@@ -113,7 +113,6 @@
     "react-dom": "^16.8.1"
   },
   "dependencies": {
-    "global": "^4.3.2",
     "lodash.debounce": "^4.0.0"
   }
 }

@@ -1,6 +1,5 @@
 /// <reference path="index.d.ts" />
 import React, { Component } from "react";
-import window from "global";
 import debounce from "lodash.debounce";
 import { Wrapper, AutoSizer, Ellipsis } from "./components";
 
@@ -9,22 +8,30 @@ class ChopLines extends Component<ChopLinesProps, ChopLinesState> {
   state = { height: 0 };
 
   onResize = debounce(() => {
-    /* istanbul ignore next */
-    if (!window) return;
-    window.requestAnimationFrame(this.measureAutoSizer);
+    this.window.requestAnimationFrame(this.measureAutoSizer);
   }, 50);
 
   componentDidMount() {
-    /* istanbul ignore next */
-    if (!window) return;
     this.measureAutoSizer();
-    window.addEventListener("resize", this.onResize);
+    this.window.addEventListener("resize", this.onResize);
   }
 
   componentWillUnmount() {
+    this.window.removeEventListener("resize", this.onResize);
+  }
+
+  get window() {
     /* istanbul ignore next */
-    if (!window) return;
-    window.removeEventListener("resize", this.onResize);
+    if (window) return window;
+    /* istanbul ignore next */
+    // @ts-ignore
+    if (typeof global !== "undefined" && global.window) return global.window;
+    /* istanbul ignore next */
+    return {
+      requestAnimationFrame: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {}
+    };
   }
 
   get doesOverflow() {
