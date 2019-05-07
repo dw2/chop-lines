@@ -38,7 +38,7 @@ npm install -g commitizen
 ```
 When you are ready to commit your changes&hellip;
 ```
-get add .
+git add .
 git cz
 ```
 Then, follow the CLI wizard.
