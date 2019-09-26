@@ -59,6 +59,7 @@ jobs:
             cp README.md dist/README.md
             cp package.json dist/package.json
             cp src/index.d.ts dist/index.d.ts
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> .npmrc
             npx semantic-release
 
 workflows:
