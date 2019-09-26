@@ -56,7 +56,6 @@ jobs:
           name: Release new version
           command: |
             yarn build
-            echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
             cp README.md dist/README.md
             cp package.json dist/package.json
             cp src/index.d.ts dist/index.d.ts
