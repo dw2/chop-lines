@@ -21,7 +21,6 @@ const setup = (props?: any) =>
 describe("The ChopLines component", () => {
   afterEach(() => {
     getBoundingClientRectSpy.mockRestore();
-    jest.restoreAllMocks();
     cleanup();
   });
 
