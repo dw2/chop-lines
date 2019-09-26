@@ -21,9 +21,8 @@ export const Wrapper = ({
   </div>
 );
 
-export const AutoSizer = ({ forwardedRef, children }: AutoSizerProps) => (
+export const AutoSizer = ({ children, forwardedRef }: AutoSizerProps) => (
   <div
-    ref={forwardedRef}
     style={{
       opacity: 0,
       pointerEvents: "none",
@@ -34,6 +33,7 @@ export const AutoSizer = ({ forwardedRef, children }: AutoSizerProps) => (
       visibility: "hidden",
       zIndex: -1
     }}
+    ref={forwardedRef}
   >
     {children}
   </div>

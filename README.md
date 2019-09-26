@@ -26,6 +26,9 @@ import ChopLines from 'chop-lines';
 
 ## [Implementation Example &rsaquo;](https://github.com/dw2/chop-lines/wiki/Implementation-Example)
 
+## Requirements
+ + React 16.9+
+
 ---
 
 ## Contributing
