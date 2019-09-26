@@ -1,6 +1,6 @@
 {
   "name": "chop-lines",
-  "version": "0.0.0-semantic-release",
+  "version": "0.0.0-development",
   "description": "A React component which truncates lines of HTML.",
   "main": "index.js",
   "types": "index.d.ts",
@@ -106,7 +106,7 @@
     "react": "~16.8.5",
     "react-dom": "~16.8.5",
     "react-hot-loader": "^4.6.5",
-    "semantic-release": "^15.13.3",
+    "semantic-release": "^15.13.24",
     "source-map-loader": "^0.2.4",
     "ts-jest": "^24.1.0",
     "tslint": "^5.20.0",
