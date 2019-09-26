@@ -17,9 +17,7 @@ cache_paths: &cache_paths
 yarn_install: &yarn_install
   run:
     name: Install yarn packages
-    command: |
-      echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
-      yarn install --non-interactive --cache-folder ~/.cache/yarn
+    command: yarn install --non-interactive --cache-folder ~/.cache/yarn
 
 jobs:
   test:
@@ -61,6 +59,7 @@ jobs:
             cp README.md dist/README.md
             cp package.json dist/package.json
             cp src/index.d.ts dist/index.d.ts
+            npm set //registry.npmjs.org/:_authToken=$NPM_TOKEN
             npx semantic-release
 
 workflows:
