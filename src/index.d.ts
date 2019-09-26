@@ -7,10 +7,6 @@ declare interface ChopLinesProps {
   children: any;
 }
 
-declare interface ChopLinesState {
-  height: number;
-}
-
 declare interface WrapperProps {
   lineHeight: string;
   maxHeight: string;
@@ -19,8 +15,8 @@ declare interface WrapperProps {
 }
 
 declare interface AutoSizerProps {
-  forwardedRef: (autoSizer: HTMLElement) => void;
   children: any;
+  forwardedRef: React.RefObject<HTMLDivElement>;
 }
 
 declare interface EllipsisProps {

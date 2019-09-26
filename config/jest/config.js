@@ -20,10 +20,7 @@ module.exports = {
   modulePathIgnorePatterns: ["<rootDir>/dist", "<rootDir>/config"],
   preset: "ts-jest",
   rootDir: "../../",
-  setupFiles: [
-    "<rootDir>/config/jest/enzyme.js",
-    "<rootDir>/config/jest/jsdom-polyfills.js"
-  ],
+  setupFiles: ["<rootDir>/config/jest/jsdom-polyfills.js"],
   testEnvironment: "jest-environment-jsdom-global",
   testMatch: ["<rootDir>/src/*.test.tsx"],
   testURL: "http://localhost/",

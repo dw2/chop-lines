@@ -1,135 +1,100 @@
 /// <reference path="index.d.ts" />
 import * as React from "react";
-import { mount } from "enzyme";
+import { render, cleanup, act } from "@testing-library/react";
 import ChopLines from "./chop-lines";
 
-describe("The ChopLines component", () => {
-  let wrapper: any;
-  const ellipsis = <a>Read More</a>;
-  const defualtBounds = { width: 420, top: 0, left: 0, bottom: 0, right: 0 };
+const defualtBounds = { width: 420, top: 0, left: 0, bottom: 0, right: 0 };
+const ellipsis = <a>Read More</a>;
+let getBoundingClientRectSpy: any;
 
-  const mockBoundsForHeight = (height: number) => {
-    Element.prototype.getBoundingClientRect = jest.fn(() => {
-      return { ...defualtBounds, height };
-    });
-  };
+const mockBoundsForHeight = (height: number) => {
+  getBoundingClientRectSpy = jest
+    .spyOn(Element.prototype, "getBoundingClientRect")
+    .mockImplementation(() => ({ ...defualtBounds, height }));
+};
+
+const setup = (props?: any) =>
+  render(
+    <ChopLines lines={1} lineHeight={16} children={<p>Test</p>} {...props} />
+  );
+
+describe("The ChopLines component", () => {
+  afterEach(() => {
+    getBoundingClientRectSpy.mockRestore();
+    jest.restoreAllMocks();
+    cleanup();
+  });
 
   it("should render with the default ellipsis", () => {
     mockBoundsForHeight(32);
-    wrapper = mount(
-      <ChopLines lines={1} lineHeight={16}>
-        <p>Testing</p>
-      </ChopLines>
-    );
-    expect(wrapper.html()).toContain("…");
+    const { getByText } = setup();
+    expect(getByText("…")).toBeDefined();
   });
 
-  it("should render the ellipsis when content exceeds maxium lines", () => {
+  it("should render a given ellipsis when content exceeds maxium lines", () => {
     mockBoundsForHeight(32);
-    wrapper = mount(
-      <ChopLines lines={1} lineHeight={16} ellipsis={ellipsis}>
+    const { getByText } = setup({
+      ellipsis,
+      children: (
         <p>
           Too many <br /> lines
         </p>
-      </ChopLines>
-    );
-    expect(wrapper.html()).toContain("Read More");
+      )
+    });
+    expect(getByText("Read More")).toBeDefined();
   });
 
-  it("should not render the ellipsis when content does not exceed maxium lines", () => {
+  it("should not render a given ellipsis when content does not exceed maxium lines", () => {
     mockBoundsForHeight(16);
-    wrapper = mount(
-      <ChopLines lines={1} lineHeight={16} ellipsis={ellipsis}>
-        <p>Just one line here.</p>
-      </ChopLines>
-    );
-    expect(wrapper.html()).not.toContain("Read More");
+    const { queryByText } = setup({
+      ellipsis,
+      children: <p>Just one line here.</p>
+    });
+    expect(queryByText("Read More")).toBeNull();
   });
 
-  it("should render the ellipsis when content exceeds max height", () => {
+  it("should render a given ellipsis when content exceeds max height", () => {
     mockBoundsForHeight(40);
-    wrapper = mount(
-      <ChopLines maxHeight={20} ellipsis={ellipsis}>
+    const { getByText } = setup({
+      ellipsis,
+      lines: undefined,
+      lineHeight: undefined,
+      maxHeight: 20,
+      children: (
         <p>
           Too many <br /> lines
         </p>
-      </ChopLines>
-    );
-    expect(wrapper.html()).toContain("Read More");
+      )
+    });
+    expect(getByText("Read More")).toBeDefined();
   });
 
-  it("should not render the ellipsis when content does not exceed max height", () => {
+  it("should not render a given ellipsis when content does not exceed max height", () => {
     mockBoundsForHeight(20);
-    wrapper = mount(
-      <ChopLines maxHeight={40} ellipsis={ellipsis}>
-        <p>Just one line here.</p>
-      </ChopLines>
-    );
-    expect(wrapper.html()).not.toContain("Read More");
+    const { queryByText } = setup({
+      ellipsis,
+      lines: undefined,
+      lineHeight: undefined,
+      maxHeight: 40,
+      children: (
+        <p>
+          Too many <br /> lines
+        </p>
+      )
+    });
+    expect(queryByText("Read More")).toBeNull();
   });
 
-  describe("when unmounting", () => {
-    it("should do nothing when the autoSizer ref is not defined", () => {
-      wrapper = mount(
-        <ChopLines lines={1} lineHeight={16} ellipsis={ellipsis}>
-          <p>test</p>
-        </ChopLines>
-      );
-      const instance = wrapper.instance();
-
-      jest.spyOn(window, "removeEventListener");
-      instance.componentWillUnmount();
-      expect(window.removeEventListener).toHaveBeenCalled();
+  it("should measure the autoSizer when the window resizes", done => {
+    mockBoundsForHeight(20);
+    setup({ ellipsis });
+    expect(getBoundingClientRectSpy).toHaveBeenCalledTimes(1);
+    act(() => {
+      window.dispatchEvent(new Event("resize"));
     });
-  });
-
-  describe("when the resize event fires", () => {
-    it("should debounce and measure the autoSizer", done => {
-      wrapper = mount(
-        <ChopLines lines={1} lineHeight={16} ellipsis={ellipsis}>
-          <p>test</p>
-        </ChopLines>
-      );
-      const instance = wrapper.instance();
-
-      jest.spyOn(instance, "measureAutoSizer");
-      instance.onResize();
-      expect(instance.measureAutoSizer).not.toHaveBeenCalled();
-      setTimeout(() => {
-        expect(instance.measureAutoSizer).toHaveBeenCalled();
-        done();
-      }, 100);
-    });
-  });
-
-  describe("measureAutoSizer function", () => {
-    it("should do nothing when the autoSizer ref is not defined", () => {
-      wrapper = mount(
-        <ChopLines lines={1} lineHeight={16} ellipsis={ellipsis}>
-          <p>test</p>
-        </ChopLines>
-      );
-      const instance = wrapper.instance();
-
-      jest.spyOn(instance, "setState");
-      instance.autoSizer = null;
-      instance.measureAutoSizer();
-      expect(instance.setState).not.toHaveBeenCalled();
-    });
-
-    it("should do nothing when the measured height has not changed", () => {
-      mockBoundsForHeight(16);
-      wrapper = mount(
-        <ChopLines lines={1} lineHeight={16} ellipsis={ellipsis}>
-          <p>test</p>
-        </ChopLines>
-      );
-      const instance = wrapper.instance();
-
-      wrapper.setState({ height: 16 });
-      jest.spyOn(instance, "setState");
-      instance.measureAutoSizer();
-      expect(instance.setState).not.toHaveBeenCalled();
-    });
+    setTimeout(() => {
+      expect(getBoundingClientRectSpy).toHaveBeenCalledTimes(2);
+      done();
+    }, 100);
   });
 });
