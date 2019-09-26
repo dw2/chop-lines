@@ -3,7 +3,7 @@ version: 2
 docker_image: &docker_image
   working_directory: ~/chop-lines
   docker:
-    - image: circleci/node:10.7.0
+    - image: circleci/node:12-browsers
 
 cache_key: &cache_key yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
 cache_keys: &cache_keys
@@ -30,6 +30,11 @@ jobs:
       - save_cache:
           key: *cache_key
           paths: *cache_paths
+      - run:
+          name: Audit modules
+          command: |
+            sudo yarn global add audit-ci --no-lockfile
+            audit-ci
       - run:
           name: Run linters
           command: yarn lint
