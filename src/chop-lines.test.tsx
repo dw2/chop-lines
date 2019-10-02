@@ -20,8 +20,13 @@ const setup = (props?: any) =>
 
 describe("The ChopLines component", () => {
   afterEach(() => {
-    getBoundingClientRectSpy.mockRestore();
+    if (getBoundingClientRectSpy) getBoundingClientRectSpy.mockRestore();
     cleanup();
+  });
+
+  it("should prevent overflow before content is measured", () => {
+    const { container } = setup();
+    expect(container.querySelector("div").style.overflow).toBe("hidden");
   });
 
   it("should render with the default ellipsis", () => {
@@ -45,11 +50,12 @@ describe("The ChopLines component", () => {
 
   it("should not render a given ellipsis when content does not exceed maxium lines", () => {
     mockBoundsForHeight(16);
-    const { queryByText } = setup({
+    const { container, queryByText } = setup({
       ellipsis,
       children: <p>Just one line here.</p>
     });
     expect(queryByText("Read More")).toBeNull();
+    expect(container.querySelector("div").style.overflow).toBe("unset");
   });
 
   it("should render a given ellipsis when content exceeds max height", () => {

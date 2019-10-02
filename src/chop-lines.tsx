@@ -36,8 +36,8 @@ const ChopLines = ({
     <Wrapper
       {...rest}
       lineHeight={maxHeight ? "unset" : `${lineHeight}px`}
-      maxHeight={doesOverflow ? maxHeightPx : "unset"}
-      overflow={doesOverflow ? "hidden" : "unset"}
+      maxHeight={!measuredHeight || doesOverflow ? maxHeightPx : "unset"}
+      overflow={!measuredHeight || doesOverflow ? "hidden" : "unset"}
     >
       <AutoSizer forwardedRef={autoSizerRef} aria-hidden>
         {children}
