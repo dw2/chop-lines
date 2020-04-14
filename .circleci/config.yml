@@ -32,11 +32,14 @@ jobs:
       - save_cache:
           key: *cache_key
           paths: *cache_paths
-      - run:
-          name: Audit modules
-          command: |
-            sudo yarn global add audit-ci --no-lockfile
-            audit-ci
+      # audit-ci has a bug that prevents builds to pass
+      # will uncomment this step once the issue is resolved
+      # https://github.com/IBM/audit-ci/issues/103
+      # - run:
+      #     name: Audit modules
+      #     command: |
+      #       sudo yarn global add audit-ci --no-lockfile
+      #       audit-ci
       - run:
           name: Run linters
           command: yarn lint
