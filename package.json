@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "tslint -c config/tslint.json -p config/tsconfig.json && eslint --print-config config/.eslintrc.js | eslint-config-prettier-check",
     "test": "jest -c config/jest/config.js --coverage",
-    "build": "rm -rf ./dist && webpack -p --config config/webpack.js --colors --display-error-details && cp src/index.d.ts dist/index.d.ts",
+    "build": "rm -rf ./dist && webpack -p --config config/webpack.js --colors --display-error-details && cp src/module.d.ts dist/module.d.ts",
     "precommit": "tslint -c config/tslint.json -p config/tsconfig.json && eslint --print-config config/.eslintrc.js | eslint-config-prettier-check && lint-staged"
   },
   "repository": "git@github.com:dw2/chop-lines.git",
