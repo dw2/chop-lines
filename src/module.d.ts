@@ -1,4 +1,4 @@
-export as namespace ChopLines;
+import * as React from "react";
 
 export interface ChopLinesProps {
   lines?: number;
@@ -24,3 +24,9 @@ declare interface AutoSizerProps {
 export interface EllipsisProps {
   children: React.ReactNode;
 }
+
+declare class ChopLines extends React.Component<ChopLinesProps, any> {}
+
+export as namespace ChopLines;
+
+export default ChopLines;
