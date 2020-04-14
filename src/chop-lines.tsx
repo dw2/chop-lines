@@ -1,9 +1,9 @@
 /// <reference path="index.d.ts" />
-import React, { useRef, useState, useEffect } from "react";
+import React, { FC, ReactElement, useRef, useState, useEffect } from "react";
 import debounce from "lodash.debounce";
 import { Wrapper, AutoSizer, Ellipsis } from "./components";
 
-const ChopLines = ({
+const ChopLines: FC<ChopLinesProps> = ({
   // use lines and lineHeight together or use maxHeight alone
   lines = 0,
   lineHeight = 0,
@@ -11,7 +11,7 @@ const ChopLines = ({
   ellipsis = "…",
   children,
   ...rest
-}: ChopLinesProps) => {
+}): ReactElement => {
   const autoSizerRef = useRef<HTMLDivElement>(null);
   const [measuredHeight, setMeasuredHeight] = useState(0);
   const maxHeightPx = `${maxHeight || lineHeight * lines}px`;
