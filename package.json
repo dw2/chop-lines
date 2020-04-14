@@ -115,14 +115,14 @@
     "webpack-cli": "^3.2.3"
   },
   "peerDependencies": {
-    "fstream": "~1.0.12",
-    "handlebars": "~4.7.6",
-    "lodash.merge": "~4.6.2",
-    "marked": "~0.8.2",
-    "mixin-deep": "~2.0.1",
-    "react": "~16.9.0",
-    "react-dom": "~16.9.0",
-    "set-value": "~3.0.2"
+    "fstream": ">=1.0.12",
+    "handlebars": ">=4.7.6",
+    "lodash.merge": ">=4.6.2",
+    "marked": ">=0.8.2",
+    "mixin-deep": ">=2.0.1",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0",
+    "set-value": ">=3.0.2"
   },
   "dependencies": {
     "lodash.debounce": "^4.0.8"
