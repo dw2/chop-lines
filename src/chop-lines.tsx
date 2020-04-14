@@ -22,11 +22,11 @@ const ChopLines: FC<ChopLinesProps> = ({
     setMeasuredHeight(height);
   };
 
-  const handleResize = debounce(() => {
-    window.requestAnimationFrame(measureAutoSizer);
-  }, 50);
-
   useEffect(() => {
+    const handleResize: any = debounce(() => {
+      window.requestAnimationFrame(measureAutoSizer);
+    }, 50);
+
     measureAutoSizer();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
